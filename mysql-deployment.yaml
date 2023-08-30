@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8.0
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_ROOT_PASSWORD
+          volumeMounts:
+            - name: scripts-volume
+              mountPath: /docker-entrypoint-initdb.d
+            - name: setup-volume
+              mountPath: /docker-entrypoint-setup.d
+            - name: data-volume
+              mountPath: /tmp/data
+      volumes:
+        - name: scripts-volume
+          configMap:
+            name: mysql-scripts
+        - name: setup-volume
+          configMap:
+            name: mysql-setup
+        - name: data-volume
+          emptyDir: {}
