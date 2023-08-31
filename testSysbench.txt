@@ -1,0 +1,29 @@
+# Prepara la base de datos para la prueba OLTP
+sysbench oltp_read_write \
+    --db-driver=mysql \
+    --mysql-db=mysql_vehicles \
+    --mysql-user=root\
+    --mysql-password=mysqlpass123\
+    --mysql-host=mysql-service \
+    --mysql-port=3306 \
+    prepare
+
+# Ejecuta la prueba
+sysbench oltp_read_write \
+    --db-driver=mysql \
+    --mysql-db=mysql_vehicles  \
+    --mysql-user=root \
+    --mysql-password=mysqlpass123\
+    --mysql-host=mysql-service \
+    --mysql-port=3306 \
+    run
+
+# Limpia la base de datos después de la prueba
+sysbench oltp_read_write \
+    --db-driver=mysql \
+    --mysql-db=mysql_vehicles  \
+    --mysql-user=root \
+    --mysql-password=mysqlpass123\
+    --mysql-host=mysql-service \
+    --mysql-port=3306 \
+    cleanup
