@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sysbench-deployment
+  namespace: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sysbench
+  template:
+    metadata:
+      labels:
+        app: sysbench
+    spec:
+      containers:
+        - name: sysbench
+          image: severalnines/sysbench
+          command: ["sh", "-c", "while true; do sleep 3600; done"]

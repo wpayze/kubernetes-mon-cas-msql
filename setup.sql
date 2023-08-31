@@ -1,6 +1,10 @@
 SET
     GLOBAL local_infile = 1;
 
+ALTER USER 'root'@'%' IDENTIFIED WITH 'mysql_native_password' BY 'mysqlpass123';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
+FLUSH PRIVILEGES;
+
 CREATE DATABASE IF NOT EXISTS mysql_vehicles;
 
 USE mysql_vehicles;

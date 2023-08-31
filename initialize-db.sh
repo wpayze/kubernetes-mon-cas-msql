@@ -14,4 +14,5 @@ curl -L -o /tmp/data/vehicle_owners.csv "https://www.dropbox.com/scl/fi/0dvm1og5
 curl -L -o /tmp/data/vehicles.csv "https://www.dropbox.com/scl/fi/3dyznncu1kl8waux4qrth/vehicles.csv?rlkey=w8mjqvdkex8315dokikvtwo6p&dl=1"
 
 # Ahora, ejecuta setup.sql:
+# sed -i "s/'hereisthepassword'/'$MYSQL_ROOT_PASSWORD'/g" /docker-entrypoint-setup.d/setup.sql
 mysql -h localhost --local-infile=1 -u root --password=$MYSQL_ROOT_PASSWORD < /docker-entrypoint-setup.d/setup.sql

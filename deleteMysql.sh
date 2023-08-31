@@ -8,5 +8,7 @@ kubectl delete configmap mysql-setup
 kubectl delete -f mysql-secret.yaml
 kubectl delete -f mysql-pv-pvc.yaml
 
+kubectl delete -f sysbench-deployment.yaml
+
 # Mostrar el estado de los pods para confirmar que todo se ha eliminado correctamente
-kubectl get pods
+kubectl get pods --namespace mysql
