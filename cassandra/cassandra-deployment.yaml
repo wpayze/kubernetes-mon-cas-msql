@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cassandra-deployment
+  namespace: cassandra
+  labels:
+    app: cassandra
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cassandra
+  template:
+    metadata:
+      labels:
+        app: cassandra
+    spec:
+      containers:
+      - name: cassandra
+        image: cassandra:4.0
+        ports:
+        - containerPort: 9042
+        volumeMounts:
+        - name: secret-volume
+          mountPath: "/etc/cassandra-secret"
+          readOnly: true
+        - name: init-script-volume
+          mountPath: "/docker-entrypoint-initdb.d"
+        - name: setup-cql-volume
+          mountPath: "/docker-entrypoint-setup.d"
+        - name: data-volume
+          mountPath: /tmp/data
+      volumes:
+      - name: secret-volume
+        secret:
+          secretName: cassandra-secret
+      - name: init-script-volume
+        configMap:
+          name: cassandra-init-script
+      - name: setup-cql-volume
+        configMap:
+          name: cassandra-setup-cql
+      - name: data-volume
+        emptyDir: {}
