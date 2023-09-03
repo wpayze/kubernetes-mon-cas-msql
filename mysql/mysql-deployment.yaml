@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql-deployment
-  namespace: mysql
+  namespace: luisa-parra
 spec:
   replicas: 1
   selector:
@@ -27,8 +27,8 @@ spec:
               mountPath: /docker-entrypoint-initdb.d
             - name: setup-volume
               mountPath: /docker-entrypoint-setup.d
-            - name: data-volume
-              mountPath: /tmp/data
+            - name: csv-volume
+              mountPath: /csv
       volumes:
         - name: scripts-volume
           configMap:
@@ -36,5 +36,6 @@ spec:
         - name: setup-volume
           configMap:
             name: mysql-setup
-        - name: data-volume
-          emptyDir: {}
+        - name: csv-volume
+          hostPath:
+            path: /tmp/csv

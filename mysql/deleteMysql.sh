@@ -6,7 +6,6 @@ kubectl delete -f mysql-deployment.yaml
 kubectl delete configmap mysql-scripts
 kubectl delete configmap mysql-setup
 kubectl delete -f mysql-secret.yaml
-kubectl delete -f mysql-pv-pvc.yaml
 
 kubectl delete -f sysbench-deployment.yaml
 

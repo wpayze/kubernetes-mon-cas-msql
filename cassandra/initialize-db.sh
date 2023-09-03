@@ -12,10 +12,10 @@ done
 
 mkdir -p /tmp/data
 
-curl -L -o /tmp/data/brands.csv "https://www.dropbox.com/scl/fi/5ais2btoa97dwguaedf3o/brands.csv?rlkey=0vmy8o1i94inig4uz4yo1s8s5&dl=1"
-curl -L -o /tmp/data/models.csv "https://www.dropbox.com/scl/fi/52g4piqal2jt3h30e6gxi/models.csv?rlkey=4aua2zm716odn5mpr1hyxcid1&dl=1"
-curl -L -o /tmp/data/owners.csv "https://www.dropbox.com/scl/fi/k5j59q55jmte8tc023u7b/owners.csv?rlkey=d616vpjj7k23bi5cmmi39zknb&dl=1"
-curl -L -o /tmp/data/vehicle_owners.csv "https://www.dropbox.com/scl/fi/0dvm1og5kzphe7w8dg8zy/vehicle_owners.csv?rlkey=e0j2qosucfvoyvkvqnfd45lkj&dl=1"
-curl -L -o /tmp/data/vehicles.csv "https://www.dropbox.com/scl/fi/3dyznncu1kl8waux4qrth/vehicles.csv?rlkey=w8mjqvdkex8315dokikvtwo6p&dl=1"
+curl -L -o /tmp/data/brands.csv "https://www.dropbox.com/scl/fi/9p4qyhhm598knm87m0xm6/brands.csv?rlkey=bmtrp09580i5lloe4dcqntp83&dl=1"
+curl -L -o /tmp/data/models.csv "https://www.dropbox.com/scl/fi/nwpo2t7jzv3ldiuc7ark4/models.csv?rlkey=kgcfhpemfo5a1kulq56ldkvpb&dl=1"
+curl -L -o /tmp/data/owners.csv "https://www.dropbox.com/scl/fi/p496m1fde0llalxizwwpm/owners.csv?rlkey=jhh9nokxh9q3kz74yjej1axs0&dl=1"
+curl -L -o /tmp/data/vehicle_owners.csv "https://www.dropbox.com/scl/fi/fit8oz9wds4j9ui9kqx1n/vehicle_owners.csv?rlkey=bni00y4ud9aiiskay5wla4qk0&dl=1"
+curl -L -o /tmp/data/vehicles.csv "https://www.dropbox.com/scl/fi/1e2dwigc57489dpmyvf95/vehicles.csv?rlkey=2bh6eyx1oxjlskdni9drnx5dx&dl=1"
 
 cqlsh -f /docker-entrypoint-setup.d/setup.cql
