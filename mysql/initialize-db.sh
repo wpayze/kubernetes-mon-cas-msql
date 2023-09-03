@@ -1,17 +1,17 @@
 #!/bin/sh
 
+mkdir -p /tmp/data
+
+curl -L -o /tmp/data/brands.csv "https://www.dropbox.com/scl/fi/mcxslsmo4keaiz8jhov5v/brands.csv?rlkey=4z8js0uqfknckhijaqkpn9x6h&dl=1"
+curl -L -o /tmp/data/models.csv "https://www.dropbox.com/scl/fi/pe3guzvx9w8tps7gp9qu7/models.csv?rlkey=lftqzh47qckhx53ttc4u79pvf&dl=1"
+curl -L -o /tmp/data/owners.csv "https://www.dropbox.com/scl/fi/lgm7hc3yhx4za3f43d3xt/owners.csv?rlkey=yqwl0zk3chkly6razz1zy1jb5&dl=1"
+curl -L -o /tmp/data/vehicle_owners.csv "https://www.dropbox.com/scl/fi/pg1mfe32x0ymbxnxks8r3/vehicle_owners.csv?rlkey=px9gev124onudq4ptd8y6gtd6&dl=1"
+curl -L -o /tmp/data/vehicles.csv "https://www.dropbox.com/scl/fi/tvasqr50zg40fsn8q1h3k/vehicles.csv?rlkey=3pxrf0d0hv2jpy71uognsunir&dl=1"
+
 until mysqladmin ping --host=localhost --user=root --password=$MYSQL_ROOT_PASSWORD; do
     echo --password=$MYSQL_ROOT_PASSWORD;
     sleep 2
 done
-
-# mkdir -p /tmp/data
-
-# curl -L -o /tmp/data/brands.csv "https://www.dropbox.com/scl/fi/9p4qyhhm598knm87m0xm6/brands.csv?rlkey=bmtrp09580i5lloe4dcqntp83&dl=1"
-# curl -L -o /tmp/data/models.csv "https://www.dropbox.com/scl/fi/nwpo2t7jzv3ldiuc7ark4/models.csv?rlkey=kgcfhpemfo5a1kulq56ldkvpb&dl=1"
-# curl -L -o /tmp/data/owners.csv "https://www.dropbox.com/scl/fi/p496m1fde0llalxizwwpm/owners.csv?rlkey=jhh9nokxh9q3kz74yjej1axs0&dl=1"
-# curl -L -o /tmp/data/vehicle_owners.csv "https://www.dropbox.com/scl/fi/fit8oz9wds4j9ui9kqx1n/vehicle_owners.csv?rlkey=bni00y4ud9aiiskay5wla4qk0&dl=1"
-# curl -L -o /tmp/data/vehicles.csv "https://www.dropbox.com/scl/fi/1e2dwigc57489dpmyvf95/vehicles.csv?rlkey=2bh6eyx1oxjlskdni9drnx5dx&dl=1"
 
 # Ahora, ejecuta setup.sql:
 # sed -i "s/'hereisthepassword'/'$MYSQL_ROOT_PASSWORD'/g" /docker-entrypoint-setup.d/setup.sql

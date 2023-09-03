@@ -12,7 +12,7 @@ kubectl apply -f mysql-secret.yaml
 kubectl apply -f mysql-deployment.yaml
 kubectl apply -f mysql-service.yaml
 
-kubectl apply -f sysbench-deployment.yaml
+#kubectl apply -f sysbench-deployment.yaml
 
 # Mostrar el estado de los pods para confirmar que todo se ha creado correctamente
 kubectl get pods --namespace luisa-parra

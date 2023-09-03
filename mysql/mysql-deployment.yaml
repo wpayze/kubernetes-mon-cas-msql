@@ -27,8 +27,8 @@ spec:
               mountPath: /docker-entrypoint-initdb.d
             - name: setup-volume
               mountPath: /docker-entrypoint-setup.d
-            - name: csv-volume
-              mountPath: /csv
+            - name: data-volume
+              mountPath: /tmp/data
       volumes:
         - name: scripts-volume
           configMap:
@@ -36,6 +36,5 @@ spec:
         - name: setup-volume
           configMap:
             name: mysql-setup
-        - name: csv-volume
-          hostPath:
-            path: /tmp/csv
+        - name: data-volume
+          emptyDir: {}
