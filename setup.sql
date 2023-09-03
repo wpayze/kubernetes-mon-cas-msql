@@ -60,17 +60,17 @@ CREATE TABLE vehicle_owners (
 );
 
 -- Importar CSV a MySQL
-LOAD DATA LOCAL INFILE '/tmp/data/brands.csv' INTO TABLE brands FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+-- LOAD DATA LOCAL INFILE '/csv/brands.csv' INTO TABLE brands FIELDS TERMINATED BY ',' IGNORE 1 LINES;
 
-LOAD DATA LOCAL INFILE '/tmp/data/models.csv' INTO TABLE models FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+-- LOAD DATA LOCAL INFILE '/csv/models.csv' INTO TABLE models FIELDS TERMINATED BY ',' IGNORE 1 LINES;
 
-LOAD DATA LOCAL INFILE '/tmp/data/owners.csv' INTO TABLE owners FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+-- LOAD DATA LOCAL INFILE '/csv/owners.csv' INTO TABLE owners FIELDS TERMINATED BY ',' IGNORE 1 LINES;
 
-LOAD DATA LOCAL INFILE '/tmp/data/vehicles.csv' INTO TABLE vehicles FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+-- LOAD DATA LOCAL INFILE '/csv/vehicles.csv' INTO TABLE vehicles FIELDS TERMINATED BY ',' IGNORE 1 LINES;
 
-SET
-    SESSION sql_mode = '';
+-- SET
+--     SESSION sql_mode = '';
 
-LOAD DATA LOCAL INFILE '/tmp/data/vehicle_owners.csv' INTO TABLE vehicle_owners FIELDS TERMINATED BY ',' IGNORE 1 LINES (id, vehicle_id, owner_id, @purchase_date)
-SET
-    purchase_date = STR_TO_DATE(@purchase_date, '%c/%e/%Y');
+-- LOAD DATA LOCAL INFILE '/csv/vehicle_owners.csv' INTO TABLE vehicle_owners FIELDS TERMINATED BY ',' IGNORE 1 LINES (id, vehicle_id, owner_id, @purchase_date)
+-- SET
+--     purchase_date = STR_TO_DATE(@purchase_date, '%c/%e/%Y');
