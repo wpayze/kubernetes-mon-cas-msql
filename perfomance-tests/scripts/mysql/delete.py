@@ -1,6 +1,5 @@
 import mysql.connector
 import time
-import traceback  
 
 db_config = {
     "host": "mysql-service",
@@ -14,27 +13,25 @@ try:
     db_connection = mysql.connector.connect(**db_config)
     print("Conectado a la base de datos.")
 
-    db_connection.ping(reconnect=True, attempts=3, delay=5) 
+    db_connection.ping(reconnect=True, attempts=3, delay=5)
     print("La conexión está activa.")
 
     cursor = db_connection.cursor()
 
-    print("Realizando consulta SELECT...")
     start_time = time.time()
-    cursor.execute("SELECT * from vehicles")
-    
-    results = cursor.fetchall()
-    num_rows = len(results)
+
+    print("Eliminando registros...")
+    cursor.execute("DELETE FROM vehicles LIMIT 100000")
+
+    db_connection.commit()
 
     end_time = time.time()
     elapsed_time = end_time - start_time
-    print(f"\nTiempo transcurrido: {elapsed_time:.6f} segundos")
-    print(f"Registros devueltos: {num_rows}")
+    print(f"Tiempo transcurrido: {elapsed_time:.6f} segundos")
 
 except mysql.connector.Error as err:
-    print(f"Error al conectar o consultar la base de datos: {err}")
-    print("Información adicional:")
-    print(traceback.format_exc()) 
+    print(f"Error al conectar o eliminar en la base de datos: {err}")
+    db_connection.rollback() 
 
 finally:
     if 'cursor' in locals() and cursor is not None:
