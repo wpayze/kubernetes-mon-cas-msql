@@ -11,7 +11,7 @@ sysbench oltp_read_write \
 # Ejecuta la prueba
 sysbench oltp_read_write \
     --db-driver=mysql \
-    --mysql-db=mysql_vehicles  \
+    --mysql-db=mysql_vehicles \
     --mysql-user=root \
     --mysql-password=mysqlpass123\
     --mysql-host=mysql-service \

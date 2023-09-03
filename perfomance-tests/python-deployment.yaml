@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-deployment
+  namespace: luisa-parra
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+      - name: python-container
+        image: python:3.9
+        volumeMounts:
+        - name: scripts-volume 
+          mountPath: /performance-scripts  
+        command: ["sh", "-c"]
+        args:
+          - |
+            pip install cassandra-driver pymongo mysql-connector-python
+            sleep infinity
+      volumes: 
+      - name: scripts-volume 
+        hostPath:
+          path: /tmp/performance-scripts
